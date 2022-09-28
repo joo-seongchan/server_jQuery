@@ -7,8 +7,19 @@
     <title>node.js express</title>
   </head>
   <body>
-    <h1>index.html</h1>
-    <p>ㅁㅇㄻㅇㄹㅇㅁㄴㄹ</p>
-    <p>adsfasdfafd</p>
+    <form action="/products" method="get">
+      <fieldset>
+        <legend>GET</legend>
+        <input type="submit" />
+      </fieldset>
+    </form>
+    <form action="/products" method="post">
+      <fieldset>
+        <legend>POST</legend>
+        <input name="name" />
+        <input name="price" />
+        <input type="submit" />
+      </fieldset>
+    </form>
   </body>
 </html>
