@@ -1,25 +1,19 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>node.js express</title>
+    <title>XML</title>
   </head>
   <body>
-    <form action="/products" method="get">
-      <fieldset>
-        <legend>GET</legend>
-        <input type="submit" />
-      </fieldset>
-    </form>
-    <form action="/products" method="post">
-      <fieldset>
-        <legend>POST</legend>
-        <input name="name" />
-        <input name="price" />
-        <input type="submit" />
-      </fieldset>
-    </form>
+    <script>
+      var request = new XMLHttpRequest();
+      request.open("GET", "/data.html", false);
+
+      request.send();
+
+      document.body.innerHTML += request.responseText;
+    </script>
   </body>
 </html>

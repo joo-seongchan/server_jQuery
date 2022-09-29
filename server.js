@@ -3,6 +3,7 @@ var express = require("express");
 // const { response } = require("express");
 
 var app = express();
+
 // app.use(function (request, response, next) {
 //   request.test = "request.tex";
 //   response.test = "response.test";
@@ -12,17 +13,17 @@ var app = express();
 //   response.send(`<h1>${request.test}${response.test}</h1>`);
 // });
 
-// ** 미들웨어 데이터전달
+// // ** 미들웨어 데이터전달
 
 // app.use(express.static("public"));
 // app.use(function (request, response) {
 //   response.send("<h1>hello middleware</h1>");
 // });
 
-//stactic 미들웨어
+// stactic 미들웨어
 
-// app.use(express.static("public"));
-// app.use(express.Router());
+app.use(express.static("public"));
+app.use(express.Router());
 
 // app.all("/a", function (request, response) {
 //   response.send(`<h1>Page A<h1>`);
@@ -43,60 +44,60 @@ var items = [
   { name: "커피", price: "5000" },
 ];
 
-// app.use("/data.html", function (req, res) {
-//   var output = "";
-//   output += `<!DOCTYPE html>`;
-//   output += `<html>`;
-//   output += `<head>`;
-//   output += `<title>Data Html</title>`;
-//   output += `</head>`;
-//   output += `<body>`;
+app.use("/data.html", function (req, res) {
+  var output = "";
+  output += `<!DOCTYPE html>`;
+  output += `<html>`;
+  output += `<head>`;
+  output += `<title>Data Html</title>`;
+  output += `</head>`;
+  output += `<body>`;
 
-//   items.forEach(function (item) {
-//     output += `<div>`;
-//     output += `<h1>${item.name}</h1>`;
-//     output += `<h2>${item.price}</h2>`;
-//     output += `</idv>`;
-//   });
+  items.forEach(function (item) {
+    output += `<div>`;
+    output += `<h1>${item.name}</h1>`;
+    output += `<h2>${item.price}</h2>`;
+    output += `</idv>`;
+  });
 
-//   output += `</body>`;
-//   output += `</html>`;
-//   res.send(output);
-// });
-// app.use("/data.json", function (req, res) {
-//   res.send(items);
-// });
-// app.use("/data.xml", function (req, res) {
-//   var output = "";
-//   output += `<?xml version="1.0" encoding="UTF-8 ?>`;
-//   output += `<products>`;
-//   items.forEach(function (item) {
-//     output += `<product>`;
-//     output += `<name>${item.name}</name>`;
-//     output += `<price>${item.price}</price>`;
-//     output += `</product>`;
-//   });
-//   output += `</products>`;
+  output += `</body>`;
+  output += `</html>`;
+  res.send(output);
+});
+app.use("/data.json", function (req, res) {
+  res.send(items);
+});
+app.use("/data.xml", function (req, res) {
+  var output = "";
+  output += `<?xml version="1.0" encoding="UTF-8 ?>`;
+  output += `<products>`;
+  items.forEach(function (item) {
+    output += `<product>`;
+    output += `<name>${item.name}</name>`;
+    output += `<price>${item.price}</price>`;
+    output += `</product>`;
+  });
+  output += `</products>`;
 
-//   res.send(output);
-// });
+  res.send(output);
+});
 
-//서버 응답
+// 서버 응답
 
-// app.all("/parameter", function (req, res) {
-//   var name = req.param("name");
-//   var region = req.param("region");
+app.all("/parameter", function (req, res) {
+  var name = req.param("name");
+  var region = req.param("region");
 
-//   res.send(`<h1>${name}:${region}</h1>`);
-// });
+  res.send(`<h1>${name}:${region}</h1>`);
+});
 
-//param 매서드
+// param 매서드
 
-// app.all(`/parameter/:id`, function (req, res) {
-//   var id = req.param(`id`);
+app.all(`/parameter/:id`, function (req, res) {
+  var id = req.param(`id`);
 
-//   res.send(`<h1>${id}</h1>`);
-// });
+  res.send(`<h1>${id}</h1>`);
+});
 
 app.use(express.static("public"));
 const bodyParser = require("body-parser");
